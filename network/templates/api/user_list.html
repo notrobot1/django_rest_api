@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+
+
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+.block-profile .panel, .block-profile.panel {
+ overflow: hidden;
+}
+.text-white {
+color: #fff;
+text-shadow: 1px 1px 2px #333;
+}
+.block-profile {
+margin-bottom: 20px;
+border-right:0;
+border-left: 1px solid #ddd;
+}
+.profile-name {
+ display: table;
+ table-layout: fixed;
+ height: 100%;
+ width: 100%;
+ margin: 0;
+}
+.profile-name>[class*=col-] {
+ display: table-cell;
+ float: none;
+ table-layout: fixed;
+ vertical-align: middle;
+}
+.profile-images {
+ width: 128px!important;
+ height: 128px!important;
+}
+.list-group {
+line-height: 1.3;
+border-bottom:0
+}
+.list-group-item {
+background: #ECE9E6;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#adadad));
+background: -moz-linear-gradient(0% 0% 270deg,#fff, #adadad);
+}
+.panel-body {
+background: #f7f7f7;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#bababa));
+background: -moz-linear-gradient(0% 0% 270deg,#fff, #bababa);
+  }
+</style>
+
+<div class="container">
+    <p>
+
+     <input type="button" value="Документация" onClick='location.href="/redoc"'>
+     <input type="button" value="Попробовать запросы" onClick='location.href="/swagger/"'>
+    </p>
+
+<div class="row">
+<h1> Список пользователей</h1>
+
+            {% for user in user_list %}
+
+
+ <div class="col-md-3">
+ <div class="panel block-profile">
+ <div style="background-image: url('https://bootstraptema.ru/images/bg/bg-4.png')" class="panel-body text-center bg-center">
+ <div class="row profile-name">
+ <div class="col-xs-12 text-white">
+<!-- <img src="https://bootstraptema.ru/snippets/block/2016/b3-blocks-users/rd1-400x400.jpg" alt="Image" class="img-thumbnail img-circle profile-images">-->
+ <svg version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0, 0, 100, 100" width="175px"
+     class="letterAvatar2 li-la2-gxmikey">
+  <circle cx="50" cy="50" r="49" fill="#0000ff" stroke="#ffffff" stroke-width="1" class="la2-circle" />
+  <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{user.id}}</text>
+</svg>
+
+
+  <h3>{{user.username}}</h3>
+
+ <p><a href="id/{{user.id}}">Профиль пользователя </a></p>
+ </div>
+ </div>
+ </div>
+
+ <div class="list-group">
+ <a href="#" class="list-group-item">
+ <span class="label label-danger pull-right">{{user.date_joined}}</span>
+ Регистрация</a>
+ <a href="#" class="list-group-item">
+ <span class="label label-danger pull-right">{{user.city}}</span>
+ Локация</a>
+ <a href="#" class="list-group-item">
+ <span class="label label-danger pull-right">  {% if user.gender == "N" %} Не указанно {% endif %} {% if user.gender == "F" %} Женский {% endif %}  {% if user.gender == "M" %} Мужской {% endif %} </span>
+Пол</a>
+ </div>
+ </div>
+ </div>
+
+ {% endfor %}
+
+</div>
+</div>
+
+<!--        {% for user in user_list %}-->
+<!--    <div>-->
+<!--      <li><a href="{{ user.id }}">{{ user.username }}</a></li>-->
+<!--    </div>-->
+<!--        {% endfor %}-->
+<!--</div>-->
